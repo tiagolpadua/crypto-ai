@@ -10,6 +10,7 @@ from matplotlib import rc
 from sklearn.preprocessing import MinMaxScaler
 import math
 from tensorflow.keras.layers import Bidirectional, Dropout, Activation, Dense, LSTM
+import datetime
 # from tensorflow.python.keras.layers import CuDNNLSTM
 # from tensorflow.keras.models import Sequential
 
@@ -18,6 +19,18 @@ from tensorflow.keras.layers import Bidirectional, Dropout, Activation, Dense, L
 # sns.set(style='whitegrid', palette='muted', font_scale=1.5)
 
 # rcParams['figure.figsize'] = 14, 8
+
+isotime = datetime.datetime.now().replace(microsecond=0).isoformat()
+
+print(isotime)
+
+parent_dir = "output"
+
+output_path = os.path.join(parent_dir, isotime)
+
+os.mkdir(output_path)
+
+# exit()
 
 def hline(title = ""):
   size = 80
@@ -29,6 +42,8 @@ def hline(title = ""):
     print("-" * size)
 
 RANDOM_SEED = 42
+
+EPOCHS = 40
 
 np.random.seed(RANDOM_SEED)
 
@@ -52,7 +67,8 @@ hline()
 ax = df.plot(x='Date', y='Close')
 ax.set_xlabel("Date")
 ax.set_ylabel("Close Price (USD)")
-plt.savefig('output/plot.png')
+plt.savefig(os.path.join(output_path, 'plot.png'))
+plt.close()
 
 scaler = MinMaxScaler()
 
@@ -140,7 +156,7 @@ BATCH_SIZE = 64
 history = model.fit(
     X_train, 
     y_train, 
-    epochs=5, 
+    epochs=EPOCHS, 
     batch_size=BATCH_SIZE, 
     shuffle=False,
     validation_split=0.1
@@ -154,7 +170,8 @@ plt.title('model loss')
 plt.ylabel('loss')
 plt.xlabel('epoch')
 plt.legend(['train', 'test'], loc='upper left')
-plt.savefig('output/loss.png')
+plt.savefig(os.path.join(output_path, 'loss.png'))
+plt.close()
 
 y_hat = model.predict(X_test)
 
@@ -169,7 +186,8 @@ plt.xlabel('Time [days]')
 plt.ylabel('Price')
 plt.legend(loc='best')
  
-plt.savefig('output/prediction.png')
+plt.savefig(os.path.join(output_path, 'prediction.png'))
+plt.close()
 
 hline()
 hline('the end!')
