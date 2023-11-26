@@ -22,3 +22,5 @@ E:\venv-metal\Scripts\activate.bat
 - [https://colab.research.google.com/drive/1isNROIeABla4ECkmQrbP1O_9ekuB3qDG]
 - [https://www.kaggle.com/code/meetnagadia/bitcoin-price-prediction-using-lstm]
 - [https://developer.apple.com/metal/tensorflow-plugin/]
+- [https://towardsdatascience.com/how-to-finally-install-tensorflow-gpu-on-wsl2-7be59e278f92]
+- [https://freedium.cfd/https://towardsdatascience.com/how-to-finally-install-tensorflow-gpu-on-windows-10-63527910f255]
