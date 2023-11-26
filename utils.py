@@ -3,10 +3,12 @@ import shutil
 import math
 import datetime
 
-def create_output_dir():
+def create_output_dir(output_dir = "output"):
+    if not os.path.exists(output_dir):
+      os.makedirs(output_dir)
+
     isotime = datetime.datetime.now().replace(microsecond=0).isoformat()
-    OUTPUT_DIR = "output"
-    output_path = os.path.join(OUTPUT_DIR, isotime)
+    output_path = os.path.join(output_dir, isotime.replace(':', '_'))
     os.mkdir(output_path)
     return output_path
 

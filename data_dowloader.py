@@ -4,7 +4,7 @@ import urllib.request
 import zipfile
 from urllib.error import URLError, HTTPError
 
-def download_data(pair = 'BTCUSDT', granularity = '5m', start_month = 1, start_year = 2020):
+def download_data(pair = 'BTCUSDT', granularity = '5m', start_month = 9, start_year = 2023):
 
   today = datetime.date.today()
 
@@ -16,7 +16,13 @@ def download_data(pair = 'BTCUSDT', granularity = '5m', start_month = 1, start_y
 
   DOWNLOAD_DIR = "downloads"
 
+  if not os.path.exists(DOWNLOAD_DIR):
+    os.makedirs(DOWNLOAD_DIR)
+
   TEMP_DIR = "temp"
+
+  if not os.path.exists(TEMP_DIR):
+    os.makedirs(TEMP_DIR)
 
   for year in range(start_year, current_year + 1):
     for month in range(1, 12 + 1):

@@ -43,9 +43,9 @@ def preprocess(data_raw, seq_len, train_split):
 
     return X_train, y_train, X_test, y_test
 
-# clear_temp_dir()
+clear_temp_dir()
 
-# download_data()
+download_data()
 
 np.random.seed(RANDOM_SEED)
 

@@ -12,6 +12,8 @@ pip install scikit-learn
 pip install openpyxl
 python3 -m venv ~/venv-metal
 source ~/venv-metal/bin/activate
+python3 -m venv e:\venv-metal
+E:\venv-metal\Scripts\activate.bat
 ```
 
 ## Links
